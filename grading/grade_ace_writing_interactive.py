@@ -459,7 +459,9 @@ def main():
                 matched_email = None
                 
                 for email, answer_text in submissions.items():
-                    if first_name in email.lower() and last_name in email.lower():
+                    # Remove hyphens from email for comparison to match cleaned names
+                    email_clean = email.lower().replace('-', '')
+                    if first_name in email_clean and last_name in email_clean:
                         found_submission = answer_text
                         matched_email = email
                         break
